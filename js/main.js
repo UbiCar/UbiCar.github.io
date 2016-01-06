@@ -1,5 +1,3 @@
-// Dean Attali 2015
-
 var main = {
 
   bigImgEl : null,
@@ -24,7 +22,7 @@ var main = {
     })
 
     // show a message if there is one to show
-    var qs = main.getQueryParams();
+    qs = main.getQueryParams();
     if (qs.message) {
       $(".container")[0].innerHTML =
         '<div class="row"><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">' +
@@ -36,22 +34,14 @@ var main = {
 
     // show the big header image	
     main.initImgs();
-    
-    // set up Google Analytics event tracking
-    if (typeof ga === "function") {
-      $("a[data-ga-event]").click(function() {
-        ga('send', 'event', $(this).data("ga-category"), $(this).data("ga-action"), $(this).data("ga-label"));
-      });
-    }
   },
   
   initImgs : function() {
-    // If the page was large images to randomly select from, choose an image
+	// If the page was large images to randomly select from, choose an image
     if ($("#header-big-imgs").length > 0) {
       main.bigImgEl = $("#header-big-imgs");
       main.numImgs = main.bigImgEl.attr("data-num-img");
 
-          // 2fc73a3a967e97599c9763d05e564189
 	  // set an initial image
 	  var imgInfo = main.getImgInfo();
 	  var src = imgInfo.src;
@@ -69,7 +59,7 @@ var main = {
 		// if I want to do something once the image is ready: `prefetchImg.onload = function(){}`
 		
   		setTimeout(function(){
-                  var img = $("<div></div>").addClass("big-img-transition").css("background-image", 'url(' + src + ')');
+          var img = $("<div></div>").addClass("big-img-transition").css("background-image", 'url(' + src + ')');
   		  $(".intro-header.big-img").prepend(img);
   		  setTimeout(function(){ img.css("opacity", "1"); }, 50);
 		  
@@ -113,7 +103,7 @@ var main = {
  
  // get the GET parameters in the URL
  getQueryParams : function() {
-    var qs = document.location.search.replace(/\?/g, "&").split("+").join(" ");
+    qs = document.location.search.split("+").join(" ");
 
     var params = {}, tokens,
         re = /[?&]?([^=]+)=([^&]*)/g;
